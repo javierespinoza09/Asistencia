@@ -91,7 +91,7 @@ def ticks_viento():  # Va a depender los ticks de lluvia que caigan, es una inte
     return dig_wind
 
 def ticks():   # Va a depender los ticks de lluvia que caigan, es una interrupcion
-    global a
+    #global a
     # comp = int(input("Ingrese el valor de a :"))
     a = get_voltage_dig(digital_in)
     return a
@@ -155,13 +155,13 @@ def condicionTicks_viento(digital):
         ban1 = False
         return ban1
 
-def sensor_velocidad(speed,count_wind_speed,wind_speed,ban,tiempoInicio_viento):
-    '''
+def sensor_velocidad(): # speed,count_wind_speed,wind_speed,ban,tiempoInicio_viento):
     global  speed
     global  count_wind_speed
     global  wind_speed
     global  ban
     global  tiempoInicio_viento
+    '''
     global  lista_conteos
     global  lista_conteos_dia
     global  lista_precipitacion_hora
@@ -184,29 +184,32 @@ def sensor_velocidad(speed,count_wind_speed,wind_speed,ban,tiempoInicio_viento):
         count_wind_speed = 0
         tiempoInicio_viento = time.monotonic()
 
-def sensor_precipitacion(tiempoInicio,tiempoInicio_dia,tiempoInicio_Sensores,condicionSalida,condicionSalida_dia,bucket_size,count_hora,count_dia):
-    '''
+def sensor_precipitacion(): # tiempoInicio,tiempoInicio_dia,tiempoInicio_Sensores,condicionSalida,condicionSalida_dia,bucket_size,count_hora,count_dia):
     global  tiempoInicio
     global  tiempoInicio_dia
     global  tiempoInicio_Sensores
     global  condicionSalida
     global  condicionSalida_dia
-    '''
+    global  bucket_size
+    global  count_hora
+    global  count_dia
+    global  i
+    global  k
     if time.monotonic() - tiempoInicio_dia <= 30:
         # Ciclo para tick por hora
         if time.monotonic() - tiempoInicio < 10:
-            ticks()
+            a = ticks()
             if a == 0:
                 bucket_tipped_hora()
 
         elif time.monotonic() - tiempoInicio_Sensores >= 3:
-            sensores_varios()
+            #sensores_varios()
             tiempoInicio_Sensores = time.monotonic()
 
 
         elif time.monotonic() - condicionSalida >= 10:
             precipitacion_hora = bucket_size*count_hora  # Precipitación por hora
-            print("Ya pasaron, ", i , "hora, ", time.monotonic() - condicionSalida, "segundos, se va a dejar de contar")
+            print("Ya pasaron, ", i , "hora, ", (time.monotonic() - condicionSalida) , "segundos, se va a dejar de contar")
             print("La cantidad de ticks que hubo fueron: ", count_hora)
             print("La precipitación por hora fue de: ", precipitacion_hora , "mm\n")
             count_dia = count_dia + count_hora
@@ -254,5 +257,5 @@ def sensores_varios():
 
 while True:
     sensores_varios()
-    sensor_velocidad(speed,count_wind_speed,wind_speed,ban,tiempoInicio_viento)
-    sensor_precipitacion(tiempoInicio,tiempoInicio_dia,tiempoInicio_Sensores,condicionSalida,condicionSalida_dia,bucket_size,count_hora,count_dia)
+    sensor_velocidad()  # speed,count_wind_speed,wind_speed,ban,tiempoInicio_viento)
+    sensor_precipitacion() # tiempoInicio,tiempoInicio_dia,tiempoInicio_Sensores,condicionSalida,condicionSalida_dia,bucket_size,count_hora,count_dia)
