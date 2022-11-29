@@ -1,0 +1,2 @@
+Adafruit CircuitPython 7.3.3 on 2022-08-29; Adafruit Feather M0 RFM9x with samd21g18
+Board ID:feather_m0_rfm9x
