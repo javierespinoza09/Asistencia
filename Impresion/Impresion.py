@@ -1,5 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import xrld
+import xlrd
+
+book = xlrd.open_workbook('Prueba.xlsx')
+
 
 
