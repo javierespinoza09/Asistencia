@@ -22,42 +22,26 @@ def Rows_Print():
 			cell_date = sheet.cell(i,0)
 			cell_sensor1 = sheet.cell(i,1)
 			objDate = datetime.strptime(cell_date.value, "%Y-%m-%d %H:%M:%S")
+			print(type(cell_sensor1.value))
 			dates.append(objDate)
-			sensor1.append(cell_sensor1.value)
+			sensor1.append(int(cell_sensor1.value))
 			
 			#print(objDate)
 	return 0
 
-
-#def Lista_Dia():
-#	for i in range(rows):
-#		if i != 0:
-#			cell = sheet.cell(i,0)
-#			dias.append(cell.value)
-#			#print (cell.value)
-#	return 0
-#def Lista_Sensor1():
-#	for i in range(rows):
-#		if i != 0:
-#			cell = sheet.cell(i,1)
-#			sensor1.append(cell.value)
-#			print (cell.value)
-#	return 0
-#def gen_hist():
-#	hist, bin_edges = numpy.histogram(sensor1, bins=10)
-	
-	
-
 A = Rows_Print()
 dates = matplotlib.dates.date2num(dates)
-matplotlib.pyplot.plot_date(dates, sensor1)
-#fig0 = plt.plot(dias, sensor1)
+fig, ax = plt.subplots()
+ax.plot_date(dates, sensor1)
+
+ax.grid()
 
 
-#fig1 = plt.hist(sensor1, bins=8)
+
+
 plt.show()
-
-		
+##Requesitos de formato en archivo de datos
+##Cambiar formato de xlsx a xls // Substituir puntos por comas 	
 
 
 
