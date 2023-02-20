@@ -36,7 +36,10 @@ ax.plot_date(dates, sensor1)
 
 ax.grid()
 
+fig, ax = plt.subplots()
+ax.hist(sensor1)
 
+ax.grid()
 
 
 plt.show()
