@@ -13,4 +13,4 @@ Read_Data()
 
 
 Calc_Print()
-> Cálculo del promedio de cada grupo de datos divididos por sensor.
+> Cálculo del promedio de cada grupo de datos divididos por sensor. Realiza la impresión de los datos de humeadad por sensor en el lapso de tiempo total de los datos recopilados.
