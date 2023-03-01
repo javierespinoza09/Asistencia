@@ -1,6 +1,6 @@
 # Impresión de datos Humedad
 ## Intalación de Bibliotecas
-Instalar matplotlib, 
+Instalar
 ```
 pip install matplotlib
 pip install xlrd
