@@ -47,8 +47,9 @@ def Calc_Print():
 	ax.grid()	
 	ax.legend()
 	fig, ax = plt.subplots()
-	ax.bar(sensor_label_prom, promedio,label='Promedio de Humedad',edgecolor='black',fill=1,color='red',hatch='//')
-	ax.set_ylim(min(promedio)-50, max(promedio)+50)
+	ax.bar(sensor_label_prom, promedio,label='Promedio de Humedad',edgecolor='black',fill=1,color='red')
+	ax.set_yscale('log')
+	ax.set_ylim(min(promedio)-(min(promedio)*0.2), max(promedio)+(max(promedio)*0.2))
 
 	ax.grid()
 	ax.legend()
@@ -69,7 +70,4 @@ A = Calc_Print()
 plt.show()
 ##Requesitos de formato en archivo de datos
 ##Cambiar formato de xlsx a xls // Substituir puntos por comas 	
-
-
-
 
