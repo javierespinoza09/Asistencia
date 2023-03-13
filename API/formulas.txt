@@ -1,0 +1,33 @@
+case "F":
+            switch (sensor) {
+                case "sensor1":
+                    return (humidity ** 2 * 5.8956 * 10 ** -11 + humidity * -1.5941 * 10 ** -5 + 0.5763) * 100
+                case "sensor2":
+                    return (humidity ** 2 * 5.057 * 10 ** -11 + humidity * -1.5481 * 10 ** -5 + 0.5703) * 100
+                case "sensor3":
+                    return (humidity ** 2 * 4.3575 * 10 ** -11 + humidity * -1.5167 * 10 ** -5 + 0.5671) * 100
+                case "sensor4":
+                    return (humidity ** 2 * 5.0299 * 10 ** -11 + humidity * -1.5432 * 10 ** -5 + 0.5694) * 100
+                case "sensor5":
+                    return (humidity ** 2 * 5.8956 * 10 ** -11 + humidity * -1.5941 * 10 ** -5 + 0.5763) * 100
+            }
+            break;
+        case "G":
+            switch (sensor) {
+                case "sensor1":
+                    return (humidity ** 2 * -9.6312 * 10 ** -12 + humidity * -1.2001 * 10 ** -5 + 0.6860) * 100
+                case "sensor2":
+                    return (humidity ** 2 * -9.5595 * 10 ** -12 + humidity * -1.0635 * 10 ** -5 + 0.61522) * 100
+                case "sensor3":
+                    return (humidity ** 2 * 3.4993 * 10 ** -11 + humidity * -1.3818 * 10 ** -5 + 0.6498) * 100
+                case "sensor4":
+                    return (humidity ** 2 * 7.0808 * 10 ** -11 + humidity * -1.6878 * 10 ** -5 + 0.7177) * 100
+                case "sensor5":
+                    return (humidity ** 2 * -1.7278 * 10 ** -11 + humidity * -1.0036 * 10 ** -5 + 0.5911) * 100
+            }
+            break;
+            
+            
+            
+            
+humidity ** 2 * -1.06086 * 10 ** -10 + humidity * -3.09656 * 10 ** -6 + 0.47794214) * 100
