@@ -15,10 +15,11 @@ n = book.nsheets
 sheet = book.sheet_by_index(0)
 rows = sheet.nrows
 columns = sheet.ncols
+sensor_label = []
 sensores = []
 for i in range(columns):
 	sensores.append([])
-sensor_label = []
+	sensor_label.append(sheet.cell(0,i).value)
 sensor_label_prom = []
 dates = []
 
@@ -38,15 +39,19 @@ def Calc_Print():
 	promedio = []												#Se declara una lista de valores promedio
 	dates_val = matplotlib.dates.date2num(dates)								#Se convierte el dato tipo datetime a número interpretable por matplotlib
 	fig, ax = plt.subplots()										#Se define una figura nueva
-	for i in range(columns-1):										#Se utiliza el número de columnas con el fin de conocer la cantidad de datos
+	for i in range(3):										#Se utiliza el número de columnas con el fin de conocer la cantidad de datos
 		promedio.append(np.mean(sensores[i]))								#Se agrega el valor del promedio de los datos del sensor i a la lista de promedios
-		sensor_label.append('sensor'+str(i+1))								#Se agrega el valor de la etiqueta del sensor a la lista de sensores
 		sensor_label_prom.append('sensor'+str(i+1)+'='+str(round(promedio[i],2))) 			#Se añade el valor del promedio del conjunto a la etiqueta con 2 decimales
-		ax.plot_date(dates_val, sensores[i],linestyle='solid',label=sensor_label[i])			#Se realiza un plot con x=fechas,y=valor del sensor, etiqueta sensor
+		ax.plot_date(dates_val, sensores[i+2],linestyle='solid',label=sensor_label[i+3])			#Se realiza un plot con x=fechas,y=valor del sensor, etiqueta sensor
 	
-	ax.grid()	
-	ax.legend()
+	ax.grid()
+	ax.set_title("Humedad en las macetas",fontsize=25)
+	ax.set_ylabel("% Humedad",fontsize=18)
+	ax.set_xlabel("Tiempo",fontsize=18)	
+	ax.set_ylim(10,35)
+	ax.legend(fontsize=18,loc='lower left')
 	fig, ax = plt.subplots()
+	
 	ax.bar(sensor_label_prom, promedio,label='Promedio de Humedad',edgecolor='black',fill=1,color='red')
 	ax.set_yscale('log')
 	ax.set_ylim(min(promedio)-(min(promedio)*0.2), max(promedio)+(max(promedio)*0.2))
